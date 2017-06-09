@@ -2,37 +2,57 @@
 
 Polymer behaviour to internationalize all your aplication
 
-## Install the Polymer-CLI
+## Usage
+The usage is like the app-localize-behavior component, but this save your resurces and language in session storage
 
-First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your application locally.
+## Example
 
-## Viewing Your Application
+```html
+
+<dom-module id="x-element">
+   <template>
+    <div>{{localize('hello', 'name', 'Batman')}}</div>
+   </template>
+   <script>
+      Polymer({
+        is: "x-element",
+
+        behaviors: [
+          Polymer.AppSessionLocalizeBehavior
+        ],
+      });
+   </script>
+</dom-module>
+
+<dom-module id="x-app">
+   <template>
+    <div>{{localize('hello', 'name', 'Batman')}}</div>
+	<x-element></x-element>
+   </template>
+   <script>
+      Polymer({
+        is: "x-app",
+
+        behaviors: [
+          Polymer.AppSessionLocalizeBehavior
+        ],
+
+        properties: {
+          language: {
+            value: 'en'
+          },
+        }
+
+        attached: function() {
+          this.loadSessionResources('locales.json');
+        },
+      });
+   </script>
+</dom-module>
+```
+
+## Install
 
 ```
-$ polymer serve
+$ bower install --save Abe90/app-session-localize-behavior
 ```
-
-## Building Your Application
-
-```
-$ polymer build
-```
-
-This will create a `build/` folder with `bundled/` and `unbundled/` sub-folders
-containing a bundled (Vulcanized) and unbundled builds, both run through HTML,
-CSS, and JS optimizers.
-
-You can serve the built versions by giving `polymer serve` a folder to serve
-from:
-
-```
-$ polymer serve build/bundled
-```
-
-## Running Tests
-
-```
-$ polymer test
-```
-
-Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.
