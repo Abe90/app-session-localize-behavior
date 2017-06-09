@@ -1,0 +1,49 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<link rel="import" href="../app-localize-behavior/app-localize-behavior.html">
+<link rel="import" href="../app-storage/app-localstorage/app-localstorage-document.html">
+
+<script>
+
+	Polymer.AppSessionLocBehavior = {
+
+		observers: [
+			"_observeLanguage(language)"
+		],
+
+		_observeLanguage(language){
+			if(this.storage)
+				this.storage.data = {"language": language, "resources": this.resources};
+		},
+
+		_appLocalizeResourcesLoaded(e){
+			this.storage.data = {"language": this.language, "resources": this.resources};
+		},
+
+		attached(){
+			var self = this;
+
+			this.storage = document.createElement("app-localstorage-document");
+			this.storage.setAttribute("key", "sessionLocalize");
+			this.storage.setAttribute("session-only", "");
+
+			this.storage.addEventListener("data-changed", function(e){
+				if(e.detail.value && e.detail.value.language)
+					self.language = e.detail.value.language;
+
+				if(e.detail.value && e.detail.value.resources)
+					self.resources = e.detail.value.resources;
+			});
+
+			this.appendChild(this.storage);
+		},
+
+		loadSessionResources(filename){
+			this.addEventListener('app-localize-resources-loaded', e => this._appLocalizeResourcesLoaded(e));
+			this.loadResources(this.resolveUrl(filename));
+		}
+    }
+
+	Polymer.AppSessionLocalizeBehavior = [Polymer.AppLocalizeBehavior, Polymer.AppSessionLocBehavior];
+
+</script>

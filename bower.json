@@ -1,0 +1,19 @@
+{
+  "name": "app-session-localize-behavior",
+  "description": "Polymer behaviour to internationalize all your aplication",
+  "main": "app-session-localize-behavior.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^2.0.0-rc.2",
+    "app-localize-behavior": "PolymerElements/app-localize-behavior#^2.0.0",
+    "app-storage": "PolymerElements/app-storage#^2.0.2"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#2.0-preview",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#2.0-preview",
+    "web-component-tester": "v6.0.0-prerelease.5",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0-rc.5"
+  },
+  "resolutions": {
+    "polymer": "^2.0.0-rc.2"
+  }
+}
