@@ -1,9 +1,20 @@
 {
   "name": "app-session-localize-behavior",
+  "version": "0.0.1",
   "description": "Polymer behaviour to internationalize all your aplication",
+  "authors": [
+    "Abe90"
+  ],
+  "license": "Apache-2.0",
+  "keywords": [
+    "polymer",
+    "localize",
+    "session",
+    "storage"
+  ],
   "main": "app-session-localize-behavior.html",
   "dependencies": {
-    "polymer": "Polymer/polymer#^2.0.0-rc.2",
+    "polymer": "Polymer/polymer#^2.0.0",
     "app-localize-behavior": "PolymerElements/app-localize-behavior#^2.0.0",
     "app-storage": "PolymerElements/app-storage#^2.0.2"
   },
@@ -14,6 +25,6 @@
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0-rc.5"
   },
   "resolutions": {
-    "polymer": "^2.0.0-rc.2"
+    "polymer": "^2.0.0"
   }
 }
